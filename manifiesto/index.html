@@ -1,0 +1,1142 @@
+<meta charset="utf-8">
+<title>Manifiesto Miselia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --ground:#E4E4E2; --paper:#FFFFFF; --ink:#0A0A0A; --soft:#5A5A5A; --line:#D2D2CF; --tint:#F3F3F1;
+  --red:#D7141A; --on-red:#FFFFFF;
+  --s-red:#D7141A; --s-yellow:#E0A800; --s-green:#15803D; --s-blue:#1D4ED8;
+  --f:"Inter Tight","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#050505; --paper:#111111; --ink:#F4F4F2; --soft:#A3A3A0; --line:#2C2C2C; --tint:#1A1A1A;
+    --red:#FF4A4F; --on-red:#0A0A0A;
+    --s-red:#FF4A4F; --s-yellow:#F2C230; --s-green:#4ADE80; --s-blue:#7AA7FF;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#050505; --paper:#111111; --ink:#F4F4F2; --soft:#A3A3A0; --line:#2C2C2C; --tint:#1A1A1A;
+  --red:#FF4A4F; --on-red:#0A0A0A;
+  --s-red:#FF4A4F; --s-yellow:#F2C230; --s-green:#4ADE80; --s-blue:#7AA7FF;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.sheet{max-width:1080px;margin:0 auto;background:var(--paper)}
+.pad{padding-inline:clamp(16px,5vw,64px)}
+h1,h2,h3,h4,p,ol,ul,dl,dd,figure{margin:0}
+h1,h2,h3{text-wrap:balance;letter-spacing:-.03em;line-height:1}
+.lab{font-size:.72rem;font-weight:700;letter-spacing:.06em}
+.soft{color:var(--soft)}
+.plus{color:var(--red);font-weight:800;margin-right:.12em}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--ink)}
+nav.top .in{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:10px}
+nav.top .brand{font-weight:800;letter-spacing:-.02em;margin-right:auto}
+nav.top a{color:var(--soft);text-decoration:none;padding:3px 0;border-bottom:2px solid transparent}
+nav.top a:hover,nav.top a:focus-visible,nav.top a.on{color:var(--ink);border-color:var(--red);outline:none}
+.ctl{display:flex;gap:8px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button,.pbtn{font:inherit;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink);border:0;padding:6px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pbtn{border:1px solid var(--red);color:var(--red)}
+.pbtn[aria-pressed="true"]{background:var(--red);color:var(--on-red)}
+button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* portada */
+.cover{display:grid;gap:clamp(40px,8vw,96px);padding-block:clamp(32px,6vw,64px) 0}
+.cover .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 24px;border-top:1px solid var(--ink);padding-top:12px;position:relative}
+.cover .meta::after{content:"";position:absolute;right:0;top:-5px;width:96px;height:9px;background:var(--ink)}
+.cover .meta p{font-size:.8rem;line-height:1.35}
+.cover h1{font-size:clamp(3.2rem,13vw,8.5rem);font-weight:800;letter-spacing:-.05em}
+.cover .sub{font-size:clamp(1.1rem,2.4vw,1.5rem);font-weight:700;margin-top:14px;letter-spacing:-.02em}
+.cover .intro{max-width:54ch;margin-top:10px;color:var(--soft)}
+.band{background:var(--red);color:var(--on-red);padding-block:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px 40px}
+.band h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.band dl{display:grid;gap:6px;font-size:.92rem}
+.band dl div{display:grid;grid-template-columns:96px 1fr;gap:10px}
+.band dt{font-weight:800}
+.band .sq{display:inline-block;width:.85em;height:.85em;border:2px solid currentColor;vertical-align:-1px}
+.index{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-bottom:1px solid var(--ink)}
+.index a{display:grid;gap:4px;padding:20px 16px 22px 0;color:inherit;text-decoration:none;border-top:6px solid transparent}
+.index a:hover,.index a:focus-visible{border-top-color:var(--red);outline:none}
+.index b{font-size:1.3rem;font-weight:800;letter-spacing:-.03em}
+
+/* partes y bloques */
+section.part{padding-block:clamp(48px,8vw,96px) 0}
+.ph{display:grid;gap:6px;margin-bottom:28px}
+.ph::before{content:"";width:72px;height:9px;background:var(--ink);margin-bottom:10px}
+.ph h2{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;letter-spacing:-.045em}
+.ph .q{font-size:1.05rem;color:var(--soft)}
+.blk{display:grid;grid-template-columns:220px minmax(0,1fr);gap:16px 40px;padding-block:28px;border-top:1px solid var(--ink)}
+.bh{display:grid;gap:4px;align-content:start}
+.bh .n{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--red)}
+.bh h3{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.bh p{font-size:.85rem;color:var(--soft)}
+.bc{display:grid;gap:22px;min-width:0}
+.bc>p{max-width:64ch}
+.st{font-size:clamp(1.5rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.035em;line-height:1.08;text-wrap:balance;max-width:24ch}
+.st.s{font-size:clamp(1.15rem,2.4vw,1.5rem);max-width:36ch}
+.note{border-left:4px solid var(--red);padding-left:14px;font-weight:600;max-width:60ch}
+h4{font-size:.72rem;font-weight:700;letter-spacing:.06em;margin-bottom:-10px}
+@media (max-width:760px){.blk{grid-template-columns:1fr}}
+
+/* clave · valor */
+.kv{display:grid;border-bottom:1px solid var(--line)}
+.kv>div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:4px 20px;padding:10px 0;border-top:1px solid var(--line)}
+.kv dt{font-weight:700}
+@media (max-width:560px){.kv>div{grid-template-columns:1fr}}
+
+/* tablas */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.94rem}
+.tw table{min-width:540px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--line)}
+thead th{font-size:.72rem;font-weight:700;letter-spacing:.06em;border-bottom:2px solid var(--ink);white-space:nowrap}
+tbody th{font-weight:700}
+td.i,th.i{width:2.4em;color:var(--red);font-weight:700;font-variant-numeric:tabular-nums}
+ol.nl{list-style:none;padding:0;display:grid;border-bottom:1px solid var(--line);counter-reset:n}
+ol.nl li{counter-increment:n;display:grid;grid-template-columns:2.4em 1fr;padding:10px 0;border-top:1px solid var(--line)}
+ol.nl.punto li::before{content:counter(n) "."}
+ol.nl li::before{content:counter(n);color:var(--red);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* pendientes y vista */
+.pend{display:inline-flex;gap:6px;align-items:center;font-weight:600}
+.pend::before{content:"";width:.8em;height:.8em;border:2px solid var(--red);flex:none}
+body.showp .pend{background:var(--red);color:var(--on-red);padding:1px 8px 1px 6px}
+body.showp .pend::before{border-color:var(--on-red)}
+body[data-view="hoy"] .c-rumbo,body[data-view="rumbo"] .c-hoy{display:none}
+.tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;padding:1px 6px;border:1px solid var(--ink);margin-right:8px;vertical-align:2px}
+.tag.r{background:var(--ink);color:var(--paper)}
+
+/* gráficos */
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));border:1px solid var(--ink)}
+.trio>div{padding:16px;display:grid;gap:6px;align-content:start;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:0 -1px -1px 0}
+.trio b{font-size:1.2rem;font-weight:800;letter-spacing:-.025em;line-height:1.1}
+.chain{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;counter-reset:c}
+.chain div{counter-increment:c;padding:14px 12px 18px;border-top:9px solid var(--ink);display:block;position:relative}
+.chain div:last-child{border-top-color:var(--red)}
+
+.chain b{font-size:clamp(.78rem,1.5vw,1.05rem);font-weight:800;letter-spacing:-.03em}
+.chain div:not(:last-child)::after{content:" →";font-weight:700}
+@media (max-width:560px){.chain{grid-template-columns:1fr 1fr}}
+.circ svg{display:block;width:100%;min-width:500px;max-width:620px;height:auto}
+.circ circle{fill:none;stroke:var(--ink);stroke-width:1.5}
+.circ circle.r{stroke:var(--red);stroke-width:2.5}
+.circ text{font-family:var(--f);fill:var(--ink);text-anchor:middle}
+.circ .k{font-size:12px;font-weight:700;letter-spacing:.06em;fill:var(--soft)}
+.circ .v{font-size:17px;font-weight:700}
+.funnel{display:grid;gap:4px}
+.funnel a{display:grid;grid-template-columns:120px minmax(0,1fr);gap:4px 16px;padding:14px 16px;background:var(--tint);color:inherit;text-decoration:none;border-left:9px solid var(--ink)}
+.funnel a:nth-child(2){margin-left:6%}.funnel a:nth-child(3){margin-left:12%}
+.funnel a:nth-child(4){margin-left:18%;background:var(--red);color:var(--on-red);border-left-color:var(--ink)}
+.funnel a:hover,.funnel a:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+.funnel b{font-weight:800;letter-spacing:-.02em}
+@media (max-width:560px){.funnel a{grid-template-columns:1fr;margin-left:0!important}}
+ol.tl{list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+ol.tl li{padding:14px 12px 0 0;display:grid;gap:4px;align-content:start;position:relative;font-size:.9rem}
+ol.tl li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;background:var(--ink)}
+ol.tl li:last-child::before{background:var(--red)}
+ol.tl b{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}
+@media (max-width:700px){ol.tl{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--ink)}ol.tl li{padding:0 0 18px 18px}ol.tl li::before{top:4px;left:-7px}}
+.cap{display:grid;gap:10px}
+.cap .g{display:grid;grid-template-columns:repeat(auto-fill,22px);gap:4px}
+.cap .g i{height:22px;background:var(--ink)}
+.cap .g i.d{background:var(--red)}
+.dot{display:inline-block;width:.75em;height:.75em;border-radius:50%;margin-right:6px}
+.gauge{border:1px solid var(--ink);padding:18px;display:grid;gap:12px}
+.gauge .read{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.gauge .big{font-size:3.4rem;font-weight:800;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.bar{position:relative;height:18px;display:flex}
+.bar i{height:100%}
+.bar .mk{position:absolute;top:-6px;bottom:-6px;width:4px;background:var(--ink);outline:2px solid var(--paper)}
+.tk{position:relative;height:1.2em;font-size:.75rem;color:var(--soft);font-variant-numeric:tabular-nums}
+.tk span{position:absolute;transform:translateX(-50%)}
+input[type=range]{width:100%;accent-color:var(--red)}
+.sys{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}
+.sys .col{display:grid;gap:6px}
+.sys button{font:inherit;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--ink);padding:10px 12px;cursor:pointer;display:grid;gap:2px}
+.sys button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.sys button.off{border-style:dashed;color:var(--soft)}
+.sys button.off[aria-pressed="true"]{color:var(--paper)}
+.sys button b{font-weight:800;letter-spacing:-.02em}
+.sys .mid{border:1px solid var(--ink);padding:12px;font-weight:800;letter-spacing:-.02em;text-align:center;background:var(--tint)}
+.sys .end{border:2px solid var(--red);padding:12px;display:grid;gap:8px}
+.sys .ar{font-weight:700;font-size:1.3rem}
+@media (max-width:700px){.sys{grid-template-columns:1fr}.sys .ar{transform:rotate(90deg);justify-self:center}}
+.ficha{background:var(--tint);padding:16px;display:grid;gap:10px}
+.ficha h5{margin:0;font-size:1.3rem;font-weight:800;letter-spacing:-.03em}
+.ficha .kv>div{grid-template-columns:110px minmax(0,1fr);padding:7px 0}
+.form{border:1px solid var(--ink)}
+.form div{display:grid;grid-template-columns:1.4em 1fr;padding:9px 14px;border-bottom:1px solid var(--line)}
+.form div:first-child{font-weight:800}
+.form div:last-child{border-bottom:0;background:var(--ink);color:var(--paper);font-weight:800}
+.form span:first-child{color:var(--red);font-weight:700}
+.acc{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border:1px solid var(--ink)}
+.acc div{padding:14px;display:grid;gap:4px;align-content:start;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:0 -1px -1px 0}
+.acc b{font-size:2.6rem;font-weight:800;letter-spacing:-.05em;line-height:1}
+.acc div:last-child b{color:var(--red)}
+main table a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}
+.tag.p{border-color:var(--red);color:var(--red)}
+body.showp .tag.p{background:var(--red);color:var(--on-red)}
+.ttl{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-bottom:-10px}
+.ttl h4{margin:0}
+.unit,.duo{display:grid;gap:22px;min-width:0}
+.unit .ttl{margin-bottom:-10px}
+.journey{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.journey div{border-top:9px solid var(--ink);padding:10px 8px 12px 0;display:grid;gap:6px;align-content:start;font-size:.86rem}
+.journey div.aha{border-top-color:var(--red)}
+.journey div.aha .lab{color:var(--red)}
+.journey b{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}
+.journey .m{color:var(--soft);font-size:.8rem;border-top:1px solid var(--line);padding-top:6px}
+@media (max-width:760px){.journey{grid-template-columns:1fr 1fr}}
+.cohort{display:flex;flex-wrap:wrap;gap:4px;align-items:stretch}
+.cohort i{font-style:normal;font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums;background:var(--ink);color:var(--paper);padding:10px 8px}
+.cohort i.o{background:transparent;color:var(--soft);border:1px solid var(--line)}
+.cohort i.x{background:transparent;color:var(--ink);padding-inline:4px}
+.cohort .cut{border:2px dashed var(--red);color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:8px 10px;display:flex;align-items:center}
+.tree,.tree ul{list-style:none;margin:0;padding:0}
+.tree ul{margin-left:7px;padding-left:20px;border-left:1px solid var(--ink)}
+.tree li{position:relative;padding:5px 0}
+.tree ul>li::before{content:"";position:absolute;left:-20px;top:1.05em;width:14px;border-top:1px solid var(--ink)}
+.tree>li>b{font-size:1.25rem;font-weight:800;letter-spacing:-.025em}
+.tree>li>b::before{content:"";display:inline-block;width:.6em;height:.6em;background:var(--red);margin-right:8px;vertical-align:1px}
+.tree .f{color:var(--soft);font-size:.88rem;display:block}
+.tree .tag{margin:0 0 0 8px}
+/* apuntes del fundador, redibujados como gráficos (mismas palabras, sin capturas) */
+.gfx{display:grid;gap:14px;min-width:0;container-type:inline-size}
+.gfx>figcaption{font-size:.8rem;color:var(--soft);max-width:64ch}
+.gfx.led{gap:28px}
+.gsub{display:grid;gap:14px;min-width:0}
+.gh{font-size:1.15rem;font-weight:800;letter-spacing:-.025em;line-height:1.1;text-wrap:balance}
+.gh::before{content:"";display:inline-block;width:.6em;height:.6em;background:var(--red);margin-right:8px;vertical-align:1px}
+.mtc{border-top:9px solid var(--ink);background:var(--tint);padding:18px 20px 16px;display:grid;gap:16px}
+.mtc blockquote{margin:0;border-left:4px solid var(--red);padding-left:14px;font-size:clamp(1.1rem,3.4cqi,1.5rem);font-weight:700;letter-spacing:-.025em;line-height:1.2;text-wrap:balance;max-width:36ch}
+.mtc .mt{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+.mtc .mf{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;border-top:1px solid var(--line);padding-top:10px;font-size:.9rem}
+.mtc .mf b{font-weight:700}
+.mtc .mf i{color:var(--soft)}
+.mchain{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 0;counter-reset:m}
+.mchain li{counter-increment:m;position:relative;border-top:9px solid var(--ink);padding:10px 18px 4px 0;display:grid;gap:4px;align-content:start;min-width:0}
+.mchain li:last-child{border-top-color:var(--red)}
+.mchain li::before{content:counter(m,decimal-leading-zero);color:var(--red);font-size:.72rem;font-weight:700;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.mchain b{font-size:1rem;font-weight:800;letter-spacing:-.02em;line-height:1.12;overflow-wrap:break-word}
+.mchain li:not(:last-child)::after{content:"→";position:absolute;right:4px;top:9px;font-weight:700;font-size:1.15rem;line-height:1}
+.mchain li:nth-child(2n):not(:last-child)::after{content:none}
+@container (min-width:380px){
+  .mchain{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mchain b{font-size:1.05rem}
+  .mchain li:nth-child(2n):not(:last-child)::after{content:"→"}
+  .mchain li:nth-child(3n):not(:last-child)::after{content:none}
+}
+@container (min-width:680px){
+  .mchain{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .mchain b{font-size:.95rem}
+  .mchain li:nth-child(3n):not(:last-child)::after{content:"→"}
+  .mchain li:nth-child(5n):not(:last-child)::after{content:none}
+}
+.lflow{list-style:none;margin:0 0 0 12px;padding:0;display:grid;counter-reset:l}
+.lflow li{counter-increment:l;position:relative;border-left:2px solid var(--ink);padding:2px 0 16px 24px;font-size:.94rem;line-height:1.4;max-width:64ch}
+.lflow li:last-child{padding-bottom:0;border-left-color:transparent}
+.lflow li::before{content:counter(l);position:absolute;left:-13px;top:0;width:24px;height:24px;background:var(--ink);color:var(--paper);font-size:.78rem;font-weight:700;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.lflow li:last-child::before{background:var(--red);color:var(--on-red)}
+.ents-w{border:1px solid var(--ink)}
+.ents{border-collapse:collapse;width:100%}
+.ents thead th{background:var(--ink);color:var(--paper);border-bottom:0;padding:9px 14px}
+.ents tbody th,.ents td{padding:11px 14px;border-bottom:1px solid var(--line)}
+.ents tbody tr:last-child>*{border-bottom:0}
+.ents tbody th{white-space:normal;width:38%}
+.fld{display:inline-block;font-weight:700;overflow-wrap:anywhere}
+.sl{color:var(--red);font-weight:800;margin:0 .3em}
+.chips{display:flex;flex-wrap:wrap;gap:4px 5px;align-items:center}
+.chip{font-size:.68rem;font-weight:800;letter-spacing:.06em;line-height:1.3;padding:2px 6px;border:1px solid var(--ink)}
+.etc{color:var(--soft)}
+@container (max-width:479px){.ents thead th,.ents tbody th,.ents td{padding:9px 10px}.ents tbody th{width:45%}.fld{font-size:.84rem}.sl{margin:0 .2em}}
+@page{size:A4;margin:15mm 14mm}
+@media print{
+  :root{--ground:#fff;--paper:#fff;--ink:#0A0A0A;--soft:#5A5A5A;--line:#D2D2CF;--tint:#F3F3F1;--red:#D7141A;--on-red:#fff}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:10pt;background:#fff}
+  nav.top,.gauge,#ficha,.bh .hint{display:none!important}
+  .sheet{max-width:none}
+  .pad{padding-inline:0}
+  .cover{min-height:132mm;align-content:space-between;padding-top:0}
+  .cover h1{font-size:68pt}
+  .band{padding:7mm 8mm;margin-top:8mm!important}
+  .index{break-after:page;break-inside:avoid;grid-template-columns:repeat(5,minmax(0,1fr))}
+  .index a{padding-block:10px 12px;break-inside:avoid}
+  .index b{font-size:13pt}
+  .trio{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .index a{padding-right:8px}
+  section.part{padding-top:0}
+  .ph{margin:12mm 0 5mm;break-after:avoid;break-inside:avoid}
+  #p1 .ph{margin-top:0}
+  .ph::before{margin-bottom:6px}
+  .journey{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .journey,.tree,.cohort{break-inside:avoid}
+  .ph h2{font-size:30pt}
+  .blk{display:block;padding-block:5mm}
+  .blk::after{content:"";display:block;clear:both}
+  .bh{float:left;width:40mm;display:block}
+  .bh>*{display:block}
+  .bc{display:block;margin-left:46mm}
+  .bc>*+*,.unit>*+*{margin-top:5mm}
+  .unit{display:block}
+  .unit .ttl{margin-bottom:0}
+  #b1,#b2,#b3,#b6,#b7,#b9,#b10,#b11,#b13,#b14,#b17,#b18,#b21{break-inside:avoid}
+  #p4{break-before:page}
+  h4,.ttl{margin-bottom:0}
+  .ttl+*,h4+*{margin-top:2mm!important}
+  .st{font-size:20pt}.st.s{font-size:13pt}
+  .bh,.trio,.chain,.funnel,.tl,.form,.acc,.sys,.cap,.note,.circ,.tw,.kv,ol.nl,.bc>div,.bc>p,.unit>p,.st{break-inside:avoid}
+  h4,.ttl,.ttl+p,.bc>p:has(+.circ),.bc>p:has(+.journey),.bc>p:has(+.cohort){break-after:avoid}
+  .journey+.note,.cohort+.kv,.tree+.note{break-before:avoid}
+  .tw{overflow:visible}.tw table{min-width:0}
+  table{font-size:9pt}
+  th,td{padding-block:7px}
+  ol.nl li,.kv>div{padding-block:7px}
+  .duo{grid-template-columns:78mm minmax(0,1fr)!important}
+  .duo .circ svg{max-width:78mm!important}
+  .kv>div{grid-template-columns:42mm minmax(0,1fr)}
+  .chain{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .chain div{padding:12px 2px 12px 0}
+  .chain b{font-size:6.8pt;letter-spacing:-.01em}
+  .funnel a{grid-template-columns:34mm minmax(0,1fr)}
+  .funnel a:nth-child(2){margin-left:6%!important}.funnel a:nth-child(3){margin-left:12%!important}.funnel a:nth-child(4){margin-left:18%!important}
+  ol.tl{grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink);border-left:0}
+  ol.tl li{padding:14px 12px 0 0;font-size:8.5pt}
+  ol.tl li::before{top:-7px;left:0}
+  .sys{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+  .sys .ar{transform:none}
+  .sys button[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+  .circ svg{min-width:0;max-width:96mm}
+  .duo{display:grid;grid-template-columns:72mm minmax(0,1fr);gap:6mm;align-items:center;break-inside:avoid}
+  .duo>*{margin:0!important}
+  .duo .circ svg{max-width:72mm}
+  #b6 .bc{display:grid;grid-template-columns:minmax(0,1fr) 72mm;gap:4mm 6mm;align-items:start}
+  #b6 .bc>*{margin-top:0}
+  #b6 .bc>ol,#b6 .bc>p{grid-column:1}
+  #b6 .bc>figure{grid-column:2;grid-row:1 / span 2;margin:0}
+  #b6 .circ svg{max-width:72mm}
+  .sys button{padding:6px 10px}.sys .mid,.sys .end{padding:8px}
+  .form div{padding-block:6px}
+  .acc div{padding:9px 12px}.acc b{font-size:22pt}
+  #b20{break-inside:avoid}
+  .gfx,.gsub,.mtc{break-inside:avoid}
+  .gfx.led{break-inside:auto}
+  .gfx>figcaption{break-before:avoid}
+  .bc>p:has(+.gfx){break-after:avoid}
+  .gfx{gap:3mm}
+  .gfx.led{gap:7mm}
+  .gsub{gap:3mm}
+  .mtc{padding:4mm 5mm 3.5mm;gap:3mm}
+  .mtc blockquote{font-size:12pt}
+  .gh{font-size:11pt}
+  .mchain{grid-template-columns:repeat(5,minmax(0,1fr));gap:4mm 0}
+  .mchain li{padding-right:3.5mm}
+  .mchain b{font-size:8.5pt}
+  .mchain li:nth-child(3n):not(:last-child)::after{content:"→"}
+  .mchain li:nth-child(5n):not(:last-child)::after{content:none}
+  .lflow li{font-size:9pt;padding-bottom:3.2mm;break-inside:avoid}
+  .ents tbody th,.ents td{padding:5px 8px}
+  .ents thead th{padding:6px 8px}
+  .ents tr{break-inside:avoid}
+  .chip{font-size:6.5pt;padding:1px 4px}
+  .cover{min-height:0;gap:10mm}
+  .cover .intro{font-size:9pt;max-width:none}
+  .acc{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #b12 .bc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3mm 8mm;align-items:start}
+  #b12 .bc>*{margin:0!important}
+  #b12 .bc>.tw:first-child{grid-column:1;grid-row:1 / span 2}
+  #b12 .bc>h4{grid-column:2;grid-row:1;padding-top:7px}
+  #b12 .bc>h4+.tw{grid-column:2;grid-row:2}
+  #b12 .bc>.note,#b12 .bc>p{grid-column:1 / -1}
+  #b12{break-inside:avoid}
+  footer{display:none!important}
+}
+footer{margin-top:clamp(48px,8vw,96px);border-top:9px solid var(--ink);padding-block:20px 56px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;font-size:.8rem}
+</style>
+
+<body data-view="ambos">
+<nav class="top"><div class="in pad">
+  <span class="brand"><span class="plus">+</span>Miselia</span>
+  <a class="lab" href="#p1">I Visión</a>
+  <a class="lab" href="#p2">II Estrategia</a>
+  <a class="lab" href="#p3">III Prioridades</a>
+  <a class="lab" href="#p4">IV Medición</a>
+  <a class="lab" href="#p5">V Holding</a>
+  <div class="ctl">
+    <div class="seg" role="group" aria-label="Qué registro mostrar">
+      <button data-v="hoy" aria-pressed="false">Hoy</button>
+      <button data-v="rumbo" aria-pressed="false">Rumbo</button>
+      <button data-v="ambos" aria-pressed="true">Ambos</button>
+    </div>
+    <button class="pbtn" id="pbtn" aria-pressed="false">Pendientes</button>
+  </div>
+</div></nav>
+
+<div class="sheet">
+
+<header class="cover pad">
+  <div class="meta">
+    <p><b>Miselia Humanitaria</b><br>Manifiesto</p>
+    <p><b>Estado</b><br>Aprobada por el fundador</p>
+    <p><b>Fecha</b><br><span class="num">2026-10-19</span> · versión 5</p>
+  </div>
+  <div>
+    <h1><span class="plus">+</span>Manifiesto</h1>
+    <p class="sub">Manifiesto Universo Miselia. Proyecto foco: Miselia Joyas y Metales, pro Miselia Humanitaria.</p>
+    <p class="intro">Entrega, segundo ciclo: correcciones escritas y voluntad del Ceo Ospina· Versión final aprobada NO editable · 19.10.2026</p>
+    <p class="intro">Este documento dice para qué existe Miselia como el universo que es, hacia dónde va y cómo se mide para el caso concreto de Miselia Joyas pro Miselia Humanitaria. Es la base contra la que se contrastará toda decisión de marca, de producto y de gobierno; propios de la operacionalización de la noción Miselica de Capitalismo Distributivo para el sector de las joyas y los metales, entre Colombia y Suiza.</p>
+    <p class="intro">Se basa en los estudios previos, nociones académicas y posturas filosóficas desarrolladas por Alfonso Ospina en sus últimos 12 años de trabajo. Se construyó con las reuniones de onboarding del 5 de agosto al 15 de septiembre de 2026 (entrevistas a profundidad); con los documentos aportados por del fundador, desde 27 de julio a la fecha; y con las revisiones verbales del fundador a pie de primera lectura en reuniones programáticas, del 28 y el 29 de septiembre de 2026,con Ian Roa V de G*S.</p>
+  </div>
+</header>
+<div class="band pad" style="margin-top:clamp(40px,8vw,96px)">
+  <div>
+    <p>Es un documento interno vivo, que solo debe ser modificado por el CEO Alfonso Ospina Montes hasta la horizontalización de Miselia como sujeto jurídico. La meta y los principios de Miselia no se mueven. Cada cambio metodológico o método se aprueba bajo un estricto proceso de supervisión y contraste con los conceptos/praxis del fundador Ospina, como único creador y financiador de este universo.</p>
+  </div>
+  <div>
+    <h2>Cómo leer</h2>
+    <dl>
+      <div><dt>HOY</dt><dd>Lo que ya es cierto y se puede mostrar</dd></div>
+      <div><dt>RUMBO</dt><dd>Hacia dónde va</dd></div>
+      <div><dt>PROPUESTA</dt><dd>Lo que G*S propone. Se aprueba por el fundador si sigue incorporado al manifiesto en su versión final aprobada NO editable, presentada al contratista de manera escrita, vía mail de notificaciones, en PDF.</dd></div>
+      <div><dt>HIPÓTESIS/ VARIABLES</dt><dd>Lo que se cree y se prueba con datos</dd></div>
+      <div><dt><span class="sq"></span></dt><dd>Decisión pendiente del fundador</dd></div>
+    </dl>
+  </div>
+</div>
+<div class="pad" style="margin-top:28px;break-after:page">
+  <div class="tw"><table>
+    <thead><tr><th>Parte</th><th>Responde</th></tr></thead>
+    <tbody>
+      <tr><th><a href="#p1">I · Visión</a></th><td>Para qué existe</td></tr>
+      <tr><th><a href="#p2">II · Estrategia</a></th><td>Cómo se diferencia</td></tr>
+      <tr><th><a href="#p3">III · Prioridades</a></th><td>Qué va primero</td></tr>
+      <tr><th><a href="#p4">IV · Medición</a></th><td>Cómo se sabe si va bien</td></tr>
+      <tr><th><a href="#p5">V · Holding</a></th><td>Cómo se ordena</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<main class="pad">
+
+<!-- ================= I ================= -->
+<section class="part" id="p1">
+  <div class="ph"><h2>I · VISIÓN</h2></div>
+
+  <article class="blk" id="b1">
+    <div class="bh"><span class="n">1 ·</span><h3>Razón de ser</h3></div>
+    <div class="bc">
+      <p class="st">Las personas encontradas y rescatadas con vida.</p>
+      <p>Se reporta siempre, también cuando da cero. No lleva cifra ni plazo.</p>
+    </div>
+  </article>
+
+  <article class="blk" id="b2">
+    <div class="bh"><span class="n">2 ·</span><h3>Propósito</h3></div>
+    <div class="bc">
+      <p class="st">Demostrar que la ayuda humanitaria puede sostenerse con empresas rentables, sin depender de la caridad.</p>
+      <div class="trio">
+        <div><span class="lab soft">El motor</span><b>El Capitalismo Distributivo desde las nociones de Miselia.</b></div>
+        <div><span class="lab soft">La misión</span><b>El rescate</b></div>
+        <div><span class="lab soft">El mecanismo</span><b>La distribución progresiva del capital y el conocimiento</b></div>
+      </div>
+      <p class="st s">El capital no es el objetivo final. Es la herramienta.</p>
+      <dl class="kv">
+        <div><dt>Contra qué</dt><dd>La ayuda que depende de subvenciones y donaciones, y el sistema que pide confianza sin entregar prueba</dd></div>
+        <div><dt>La regla</dt><dd>Es una estructura, nunca una persona ni un gremio. No se busca crear una ONG: se busca crear riqueza y después redistribuirla</dd></div>
+        <div><dt>La misma vara</dt><dd>Miselia se mide con el criterio que le aplica a los demás</dd></div>
+        <div><dt>El nombre</dt><dd>El micelio: una red sin mando unificado (pero si centralizado), que intercambia, se adapta y lleva recursos hacia donde hacen falta</dd></div>
+      </dl>
+    </div>
+  </article>
+
+  <article class="blk" id="b3">
+    <div class="bh"><span class="n">3 ·</span><h3>A quién sirve</h3></div>
+    <div class="bc">
+      <dl class="kv">
+        <div><dt>Criterio</dt><dd>Quien necesita ayuda y no la puede pedir</dd></div>
+        <div><dt>Alcance</dt><dd>Con base en Suiza. Opera en Suiza y en Colombia. Intervención mundial según éxito del modelo.</dd></div>
+        <div><dt>Ante qué</dt><dd>Desastres que dejan estructuras colapsadas y personas desaparecidas</dd></div>
+      </dl>
+      <p class="note"><b>Regla de imparcialidad.</b> La ayuda se asigna por necesidad inmediata.</p>
+    </div>
+  </article>
+
+  <article class="blk" id="b4">
+    <div class="bh"><span class="n">4 ·</span><h3>Valores</h3><p>Cinco. Son las reglas del juego: responden ¿se debe o no se debe? Nacen del Miselia Transparency Chain, el modelo de transparencia del fundador.</p></div>
+    <div class="bc">
+      <figure class="gfx">
+        <div class="mtc">
+          <p class="gh"><span class="mt">Miselia Transparency Chain (MTC):</span></p>
+          <blockquote>"Un sistema empresarial en el que el cooperante puede seguir el recorrido económico de su participación desde la adquisición hasta el impacto humanitario."</blockquote>
+          <div class="mf"><b>Entrega: Documento Maestro: 40 paginas.</b><i>Por: Alfonso Ospina M (CEO Miselia)</i></div>
+        </div>
+        <figcaption>Imagen del fundador · Cita de definición del Miselia Transparency Chain (MTC) como sistema empresarial en el que se sigue el recorrido económico de la participación, con «Entrega: Documento Maestro: 40 paginas» y firma de Alfonso Ospina M.</figcaption>
+      </figure>
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Valor</th><th>En la práctica</th><th>Se rompió cuando</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><th>Verificar antes de afirmar</th><td>Toda cifra lleva fuente, fecha y documento. Si es estimación, se dice</td><td>Sale un número sin respaldo</td></tr>
+          <tr><td class="i">2</td><th>Separar las funciones</th><td>Uno prepara, otro aprueba, el banco ejecuta. Entre el banco y el fundador hay siempre un intermediario, con contrato de mandato o contrato de prestación de servicios independientes</td><td>La misma persona prepara y aprueba</td></tr>
+          <tr><td class="i">3</td><th>Cerrar una fase antes de abrir la siguiente</th><td>No se escala lo que no llegó al punto de equilibrio</td><td>Se abre un frente con el anterior sin terminar</td></tr>
+          <tr><td class="i">4</td><th>Vender, no pedir</th><td>Producto de calidad, a precio de mercado</td><td>Un mensaje de venta pide ayuda</td></tr>
+          <tr><td class="i">5</td><th>Entregar herramientas a través de diagnósticos y conocimiento practico.</th><td>A quien recibe ayuda se le resuelve un problema</td><td>Se entrega un diagnóstico sin con qué resolverlo</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Cómo se mantienen vivos</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Dónde</th><th>Regla</th></tr></thead>
+        <tbody>
+          <tr><th>Al contratar</th><td>Se contrata lento. Primero los valores, después el oficio</td></tr>
+          <tr><th>En el día a día</th><td>Se espera que cada uno mejore la orden, no solo que la cumpla</td></tr>
+          <tr><th>Ante el error</th><td>El error se corrige. La excusa repetida, no</td></tr>
+          <tr><th>Al decidir</th><td>HOY decide el fundador, hasta la horizontalización de la persona jurídica de Miselia. RUMBO: decide un cuerpo colegiado: cada Director del sector económico (para el caso: joyas y metales: Santiago Ospina)</td></tr>
+          <tr><th>Al retribuir</th><td>Quien ayuda a construir el proyecto es siempre bien retribuido</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b5">
+    <div class="bh"><span class="n">5 ·</span><h3>Promesa</h3><p>Tres. Cada una se mide.</p></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Promesa</th><th class="c-hoy">HOY</th><th class="c-rumbo">RUMBO</th><th>Se mide con</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><th>Se ve adónde fue el dinero</th><td class="c-hoy">El Miselia Transparency Chain está diseñado y estructurado. A punto de operación con el Data Ledger</td><td class="c-rumbo">Consulta en tiempo real. Cierre y publicación cada mes</td><td>El Miselia Transparency Chain completo. Entre otros: destino publicado de cada franco y firma de un tercero</td></tr>
+          <tr><td class="i">2</td><th>Calidad alta, a precio de mercado</th><td class="c-hoy">El precio está probado. Marca registrada. Garantía escrita de cinco años en joyas, redactado</td><td class="c-rumbo">La calidad, probada con los reclamos de garantía</td><td>Precio contra el mercado · reclamos de garantía</td></tr>
+          <tr><td class="i">3</td><th>El reparto de fondos de cada venta es público</th><td class="c-hoy">La fórmula del Miselia Transparency Chain está escrita</td><td class="c-rumbo">Fórmula firmada en el contrato de cada cooperante y publicada en un periódico</td><td>El reparto publicado coincide con el contrato</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Qué recibe el cooperante</h4>
+      <dl class="kv">
+        <div><dt>Antes de comprar</dt><dd>Firma un contrato que le informa producto, precio, costos, reparto y destino de los fondos</dd></div>
+        <div><dt>Al comprar</dt><dd>Un código propio, que lo acompaña en toda su relación con Miselia</dd></div>
+        <div><dt>Después</dt><dd>Ve su compra, su producto, la trazabilidad de su lote y su contribución</dd></div>
+        <div><dt>Con el tiempo</dt><dd>Los clientes / cooperantes iniciales pasan a ser accionistas. No por aportar dinero: por construir el proyecto capitalista (1000 personas naturales o jurídicas, en los primeros (24) meses de operaciones, aportando 500 francos netos mediante compras en algunas de nuestras líneas productivas de Joyas en Suiza). Es un porcentaje real del valor de la nueva marca Miselia Joyas y Metales (MSA) una vez horizontalizada, que al cumplir los veinte años de operaciones plenas, deberá valorizarse y distribuirse en los mismos 1000 socios iniciales.</dd></div>
+      </dl>
+      <dl class="kv">
+        <div><dt>Garantía</dt><dd>En joyas, garantía escrita de cinco años. Las promesas quedan en el contrato del cliente cooperativista y la garantía es por defectos de materiales y fabricación.</dd></div>
+        <div><dt>No se promete</dt><dd>Que la compra rescata a alguien · una cifra de rescatados</dd></div>
+      </dl>
+      <p><span class="pend"><span><i>Cooperante</i> es un nombre que suena a ONG. <i>Cliente Cooperativista</i>, es la noción a emplear.</span></span></p>
+      <p><b>Cadena de Transparencia del Cliente Cooperativista: Miselia Ledger Data Model ·</b><br>Recorrido numerado (a seguir al pie de la letra), sobre las metodologías y métodos, bases, etapas, formas de medición y procedimientos estandarizables descritos en el documento abreviado del ”Sistema Cerrado de trazabilidad económica: Miselia Transparency Chain (MTC)”. Ospina, 2023. Aportado al contratista Roa el 22.09.2026 vía WhatsApp oficial Miselia-G*S.</p>
+      <figure class="gfx">
+        <div class="gsub">
+          <p class="gh">LA CADENA DE TRANSPARENCIA</p>
+          <ol class="mchain">
+            <li><b>COOPERANTE</b></li>
+            <li><b>PRODUCTO/<wbr>EVENTO</b></li>
+            <li><b>INGRESO</b></li>
+            <li><b>COSTOS</b></li>
+            <li><b>MARGEN</b></li>
+            <li><b>FONDO MISELIA</b></li>
+            <li><b>PROYECTO HUMANITARIO</b></li>
+            <li><b>USAR-MISELIA 1</b></li>
+            <li><b>RESULTADO VERIFICABLE</b></li>
+          </ol>
+        </div>
+        <figcaption>Imagen del fundador · «La cadena de transparencia»: COOPERANTE → PRODUCTO/EVENTO → INGRESO → COSTOS → MARGEN → FONDO MISELIA → PROYECTO HUMANITARIO → USAR-MISELIA 1 → RESULTADO VERIFICABLE.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="blk" id="b6">
+    <div class="bh"><span class="n">6 ·</span><h3>Meta grande · a veinte años</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Qué existe en 2047</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td>Una marca de Joyas reconocida en Suiza</td></tr>
+          <tr><td class="i">2</td><td><b>Una comunidad de familias en los cantones de habla alemana de Suiza</b></td></tr>
+          <tr><td class="i">3</td><td>Una unidad de rescate capaz de desplegarse internacionalmente</td></tr>
+          <tr><td class="i">4</td><td>Un modelo demostrable de Capitalismo Distributivo Miselico mas allá del sector de las Joyas y los Metales</td></tr>
+          <tr><td class="i">5</td><td>El Capital acumulado en 20 años representado en la marca, distribuido entre quienes hicieron posible el proyecto (primeras 1000 personas naturales o jurídicas). Así, con cada marca en cada sector económico donde Miselia tenga proyección: Cinemateca StopMotion y marca de pistachos.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Cumplidos los veinte años, se vende la marca y su capital se reparte entre los socios históricos.</p>
+      <figure class="tw circ">
+        <svg viewBox="55 0 510 445" role="img" aria-label="Tres círculos: qué apasiona, en qué puede ser la mejor y cómo multiplica">
+          <circle cx="215" cy="160" r="150"/><circle cx="405" cy="160" r="150"/><circle class="r" cx="310" cy="285" r="150"/>
+          <text class="k" x="150" y="118">Qué apasiona</text>
+          <text class="v" x="150" y="146">Cerrar brechas</text>
+          <text class="k" x="462" y="92">En qué puede</text>
+          <text class="k" x="462" y="108">ser la mejor</text>
+          <text class="v" x="462" y="128">La cuenta de</text>
+          <text class="v" x="462" y="150">transparencia,</text>
+          <text class="v" x="462" y="172">pieza por pieza</text>
+          <text class="k" x="310" y="340">Cómo multiplica</text>
+          <text class="v" x="310" y="368">Cada línea rentable suma</text>
+          <text class="v" x="310" y="390">familias cooperantes</text>
+        </svg>
+      </figure>
+    </div>
+  </article>
+</section>
+
+<!-- ================= II ================= -->
+<section class="part" id="p2">
+  <div class="ph"><h2>II · ESTRATEGIA</h2></div>
+
+  <article class="blk" id="b7">
+    <div class="bh"><span class="n">7 ·</span><h3>Palabra propia</h3></div>
+    <div class="bc">
+      <p class="st" style="font-size:clamp(2.4rem,8vw,5rem)">Verificable.</p>
+      <p>Es la palabra que Miselia quiere que el mercado asocie con su nombre.</p>
+    </div>
+  </article>
+
+  <article class="blk" id="b8">
+    <div class="bh"><span class="n">8 ·</span><h3>Terreno</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th></th><th>Joyas</th><th>Producciones</th><th>Agrícola</th></tr></thead>
+        <tbody>
+          <tr><th>Quién</th><td>Familias, individuos y empresas</td><td>Familias: niños y adultos a la vez</td><td>Familias, por suscripción anual</td></tr>
+          <tr><th>Dónde</th><td>Zúrich y su aglomeración</td><td>Zúrich, y después hasta donde alcance la capacidad operativa</td><td>Toda Suiza, por sectores</td></tr>
+          <tr><th>Qué</th><td>Joyería de oro y esmeralda colombianos</td><td>Shows experienciales: teatro, con historias paralelas en stop motion como antesala</td><td>Pistacho producido en España y procesado en Suiza: se tuesta, se sala, se empaca y se comercializa</td></tr>
+          <tr><th>Cómo</th><td>Presentación del proyecto, cara a cara</td><td>Boletería y talleres</td><td>Membresía anual, después de probar el producto</td></tr>
+          <tr><th>Cuándo</th><td>EN MARCHA</td><td>Primer trimestre de 2029</td><td>Apenas el CEO decida que es un buen momento</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><b>Cómo se produce:</b> Taller propio pagado en (24 meses) de 100 millones de pesos en Medellín/Bogotá, Colombia. Con capacidad para 2 joyeros senior y la producción de 66. joyas/juegos de joyas al mes.</p>
+      <p class="note"><b>Cómo se vende.</b> Se vende 1 a 1 por medio del CEO Ospina. Se vende el proyecto, no el producto. La venta la abre la presentación del proyecto, segregada y comunicada según el tipo de cliente abordado. Se produce sobre pedido a mes vencido.</p>
+      <div class="unit"><div class="ttl"><h4>Cómo se multiplica ·</h4><span class="tag p">HIPÓTESIS</span></div>
+      <p>Las tres líneas le venden a lo mismo: <b>familias en Suiza</b>. Eso permite un circuito en el que cada venta prepara la siguiente.</p>
+      <div class="duo"><figure class="tw circ"><svg id="loop" viewBox="50 15 480 362" role="img" aria-label="VENTA → REPARTO PUBLICADO → LA FAMILIA LO COMPRUEBA → CONFÍA; vuelve · trae a otra familia · compra en otra línea"></svg></figure>
+      <div class="tw"><table>
+        <thead><tr><th>Se confirma si</th><th>Se mide con</th></tr></thead>
+        <tbody>
+          <tr><td>Las familias que comprueban vuelven más que las que no</td><td>Cooperantes activos a 24 meses, separando quienes consultaron de quienes no</td></tr>
+          <tr><td>Las familias traen a otras</td><td>% de cooperantes nuevos que llegan por otro</td></tr>
+          <tr><td>Las familias compran en más de una línea</td><td>Cooperantes en más de una línea, cuando abra la segunda</td></tr>
+        </tbody>
+      </table></div>
+      </div>
+      <p><b>La escala que plantea el fundador,</b> mover al menos: ● Joyas: 730 clientes cooperativistas en los primeros (24) meses, y después 300 anuales (500 fr/clienteC). ● Cinemateca: 5.000 tiquetes anuales (17 fr/tiquete). ● Pistachos: 250 socios anuales (500 fr/año/socio).</p>
+      <p class="note">Es el micelio aplicado al comercio: las líneas intercambian clientes y confianza. El mensaje de recomendación sigue el flujo del numeral 9: se recomienda el producto y la cuenta de transparencia, nunca "tu compra rescata".</p></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b9">
+    <div class="bh"><span class="n">9 ·</span><h3>La línea y la frase</h3></div>
+    <div class="bc">
+      <div class="chain" role="img" aria-label="Preproducir, postproducir, vender, verificar, distribuir, rescatar">
+        <div><b>PREPRODUCIR</b></div><div><b>POSTPRODUCIR</b></div><div><b>VENDER</b></div><div><b>VERIFICAR</b></div><div><b>DISTRIBUIR</b></div><div><b>RESCATAR</b></div>
+      </div>
+      <p class="st">Cadena cerrada, cuenta de transparencia.</p>
+      <p class="note">La línea ordena decisiones internas. El comprador verifica el proceso: no compra por beneficencia. <b>Nunca se usa hacia el comprador como causa y efecto.</b></p>
+    </div>
+  </article>
+
+  <article class="blk" id="b10">
+    <div class="bh"><span class="n">10 ·</span><h3>Actividades que la diferencian</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Actividad</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td>Compra el insumo en origen, con documento</td></tr>
+          <tr><td class="i">2</td><td>Produce, transforma y vende en una sola cadena</td></tr>
+          <tr><td class="i">3</td><td>Produce por pedidos reunidos en el mes, no por inventario</td></tr>
+          <tr><td class="i">4</td><td>Publica el reparto de cada venta</td></tr>
+          <tr><td class="i">5</td><td>Separa cuentas: una por línea, una por fondo, una por operaciones, una por amortizaciones</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b11">
+    <div class="bh"><span class="n">11 ·</span><h3>Ventaja de fondo</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th>De quién</th><th>Ventaja</th><th class="c-rumbo">RUMBO</th></tr></thead>
+        <tbody>
+          <tr><td>Del fundador</td><th>Conoce los dos mundos</th><td class="c-rumbo">Pasarla al sistema</td></tr>
+          <tr><td>Del fundador</td><th>Su red de personas</th><td class="c-rumbo">Construir un nicho propio: la red del fundador sesga</td></tr>
+          <tr><td>Del sistema</td><th>Un motor con raíces en tres sectores distintos</th><td class="c-rumbo">Se sostiene aunque uno falle</td></tr>
+          <tr><td>Del sistema</td><th>Producir en origen</th><td class="c-rumbo">Se usa. <b>No se comunica como precio bajo</b></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b12">
+    <div class="bh"><span class="n">12 ·</span><h3>Vocabulario</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th>Se dice</th><th>Nunca se dice</th></tr></thead>
+        <tbody>
+          <tr><td>Capitalismo distributivo</td><td>Economía distributiva</td></tr>
+          <tr><td>Resultado distribuible</td><td>Ganancia</td></tr>
+          <tr><td>Distribución progresiva del capital</td><td>Distribución progresiva de la propiedad</td></tr>
+          <tr><td>Cuenta de transparencia</td><td>Cuenta abierta</td></tr>
+          <tr><td>Código del cliente cooperativista</td><td>Número del cooperante</td></tr>
+          <tr><td>Productos, cuando se habla de todas las líneas</td><td>Joyas o shows</td></tr>
+          <tr><td>Verificado</td><td>Blockchain</td></tr>
+          <tr><td>Propósito</td><td>Misión y visión, como declaración</td></tr>
+          <tr><td>_</td><td>Biopolítica · geopolítica</td></tr>
+          <tr><td>—</td><td>La mano de obra más barata</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Del micelio</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Se dice</th><th>Nunca se dice</th></tr></thead>
+        <tbody>
+          <tr><td>Red sin mando unificado pero centralizada</td><td>Red sin centro</td></tr>
+          <tr><td>Intercambia</td><td>Reparte con generosidad</td></tr>
+          <tr><td>Se adapta: explora, refuerza lo útil y recicla el resto</td><td>Es indestructible</td></tr>
+          <tr><td>No fructifica hasta reunir reservas</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><b>La metáfora describe el comercio y el ecosistema entre líneas. Nunca el rescate:</b> quien es rescatado no devuelve nada.</p>
+      <p><span class="pend">Interpretación y traducción al Alemán del proyecto: Miselia Joyas pro Miselia Humanitaria: Miselia Schmuck für Miselia Humanitaria.</span></p>
+      <p>Es claro, elegante y permite que Miselia Humanitaria funcione como nombre propio, sin necesidad de traducirlo.</p>
+    </div>
+  </article>
+</section>
+
+<!-- ================= III ================= -->
+<section class="part" id="p3">
+  <div class="ph"><h2>III · PRIORIDADES</h2></div>
+
+  <article class="blk">
+    <div class="bh"><span class="n">06 · 13 · 14 · 15</span><h3>De la meta grande al trimestre</h3></div>
+    <div class="bc">
+      <div class="funnel">
+        <a href="#b6"><span class="lab">Veinte años</span><b>Una comunidad de familias en los cantones de habla alemana de Suiza</b></a>
+        <a href="#b13"><span class="lab">De tres a cinco años</span><b>El proyecto en marcha y consolidado a finales de 2029</b></a>
+        <a href="#b14"><span class="lab">El año</span><b>Hacer rentable la primera línea</b></a>
+        <a href="#b15"><span class="lab">El trimestre</span><b>Abrir la preventa de Joyas</b></a>
+      </div>
+      <ol class="tl">
+        <li><b>Enero – marzo 2027</b>Preventa de Joyas, el trimestre</li>
+        <li><b>Primeros 24 meses</b>730 a 1.000 clientes cooperativistas</li>
+        <li><b>Primer trimestre de 2029</b>Cinemateca de Producciones</li>
+        <li><b>Finales de 2029</b>El proyecto en marcha y consolidado</li>
+        <li><b>2047</b>Meta grande a veinte años</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="blk" id="b13">
+    <div class="bh"><span class="n">13 ·</span><h3>De tres a cinco años</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Meta</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td>El proyecto en marcha y consolidado a finales de 2029</td></tr>
+          <tr><td class="i">2</td><td>Miselia Joyas en equilibrio: 730-1000 clientes cooperativistas (socios) y 300 ventas anuales de sostenimiento (modelo 500 fr).</td></tr>
+          <tr><td class="i">3</td><td>Una segunda línea rentable: pistachos o Cinemateca</td></tr>
+          <tr><td class="i">4</td><td>El equipo de rescate formado, certificado y con experiencia en campo</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b14">
+    <div class="bh"><span class="n">14 ·</span><h3>El año</h3></div>
+    <div class="bc">
+      <p class="st s">Prioridad única: hacer rentable la primera línea.</p>
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Iniciativa</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td>Abrir la preventa de Joyas</td></tr>
+          <tr><td class="i">2</td><td>Firmar los contratos antes de vender la primera joya y certificarse en Colombia como exportador</td></tr>
+          <tr><td class="i">3</td><td>Publicar el primer cierre mensual</td></tr>
+          <tr><td class="i">4</td><td>Usar la marca de maestro (Edelmetallkontrolle – MSA, registrada desde 2024) y socializar el contrato de compra y clausula de garantía</td></tr>
+          <tr><td class="i">5</td><td>Publicar el primer informe anual en un periódico local</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b15">
+    <div class="bh"><span class="n">15 ·</span><h3>El trimestre · enero - marzo de 2027</h3></div>
+    <div class="bc">
+      <p class="st s">Prioridad única: abrir la preventa de Joyas.</p>
+      <p><b>Roca:</b> lo que tiene que quedar terminado en el trimestre para que la prioridad se cumpla. Si una falta, la preventa no abre.</p>
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Roca</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td>Identidad de marca aprobada y herramientas físicas y digitales de venta dispuestas</td></tr>
+          <tr><td class="i">2</td><td>Libro Mayor del Miselia Transparency Chain operante: qué se anota de cada venta y quién lo ve</td></tr>
+          <tr><td class="i">3</td><td>Contrato del cliente cooperativista redactado</td></tr>
+          <tr><td class="i">4</td><td>Muestras en Zúrich, para que el comprador vea lo que compra</td></tr>
+        </tbody>
+      </table></div>
+      <div class="unit"><div class="ttl"><h4>Cohorte fundadora ·</h4><span class="tag p">PROPUESTA</span></div>
+      <p>La preventa abre con una <b>cohorte fundadora</b>: los primeros clientes cooperativistas, numerados en orden de entrada. El numeral 5 dice que los <i>cooperantes iniciales</i> (730-1000) pasan a ser accionistas. La propuesta es que esos clientes cooperativistas iniciales sean los de esta cohorte.</p>
+      <div class="cohort" role="img" aria-label="Clientes cooperativistas numerados en orden de entrada; el cierre de la cohorte está por decidir">
+        <i>001</i><i>002</i><i>003</i><i>004</i><i>005</i><i class="x">…</i><span class="cut">¿Dónde cierra?</span><i class="o">&nbsp;&nbsp;&nbsp;</i><i class="o">&nbsp;&nbsp;&nbsp;</i><i class="o">&nbsp;&nbsp;&nbsp;</i>
+      </div>
+      <div class="tw"><table>
+        <thead><tr><th>Para quién</th><th>Qué gana</th></tr></thead>
+        <tbody>
+          <tr><th>El cliente cooperativista</th><td>Entra primero y queda registrado entre quienes construyeron el proyecto</td></tr>
+          <tr><th>Miselia</th><td>La preventa gana una razón para comprar ahora y no después</td></tr>
+        </tbody>
+      </table></div>
+      <p><span class="pend">La cohorte cierra: por cantidad (1000 personas naturales o jurídicas).</span></p></div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= IV ================= -->
+<section class="part" id="p4">
+  <div class="ph"><h2>IV · MEDICIÓN</h2></div>
+
+  <article class="blk" id="b16">
+    <div class="bh"><span class="n">16 ·</span><h3>Indicadores</h3></div>
+    <div class="bc">
+      <p class="st s">Número crítico del trimestre: pedidos en firme del mes.</p>
+      <div class="cap">
+        <p>Se produce a mes vencido. La capacidad máxima de (a) producción del taller (2 joyeros Senior) y (b) venta de Alfonso en Suiza, es:</p>
+        <ol class="nl punto">
+          <li>Set I de cadena, dije y topos de Salamandra, colección animales alpinos. (niña): 10 unidades/mes</li>
+          <li>Cadena y dije Quebrantahuesos (niño) : 10 Unidades/mes</li>
+          <li>Colección I - Candongas oro y plata (15) diseños (mujer): 30 pares/mes</li>
+          <li>Joyas personalizadas (inversión en materiales: oro y esmeraldas, con ventajas por incom fijo para Miselia 500 fr): 10 joyas/mes o (66 joyas, en su defecto).</li>
+          <li>Colección I. Botones Banqueros: 4 joyas/mes</li>
+          <li>Artículos customizables: 2/mes</li>
+          <li>Expansión a la Unión Europea, casos: España, Grecia, Alemania y Austria: (1) caso exitoso cada (12) meses</li>
+          <li>Franquicia Miselia Joyas, para el mundo: Taller de joyería con joyeros propios (2), línea de materiales e insumos, legal etc. Listo para exportar; Con producción, calidad y trazabilidad comprobada: (1) cada (12) meses.</li>
+        </ol>
+        <div class="g" id="cap" role="img" aria-label="Sesenta y seis joyas por mes"></div>
+        <p class="lab soft"><span class="dot" style="background:var(--ink);border-radius:0"></span>66 joyas por mes (en su defecto)</p>
+      </div>
+      <div class="unit"><div class="ttl"><h4>El indicador ·</h4><span class="tag p">PROPUESTA</span></div>
+      <ul class="tree">
+        <li><b>FRANCOS EJECUTADOS Y VERIFICADOS</b>
+          <ul>
+            <li>Francos que llegan al Fondo<span class="f">= pedidos en firme × aporte fijo por unidad</span>
+              <ul>
+                <li>Pedidos en firme del mes ....... número crítico
+                  <ul><li>Cooperantes activos</li><li>Capacidad: 66 joyas por mes</li></ul>
+                </li>
+                <li>Aporte fijo por unidad ......... <span class="pend"></span></li>
+              </ul>
+            </li>
+            <li>Francos que se pueden probar
+              <ul><li>Costos con documento de respaldo</li><li>Día de publicación del cierre</li><li>Firma de un tercero</li></ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="note">LO QUE MUEVE EL INDICADOR, ES EL flujo del sistema.</p>
+      <figure class="gfx led">
+        <div class="gsub">
+          <p class="gh">6. Flujo que debe soportar el sistema</p>
+          <ol class="lflow">
+            <li>Crear la referencia del producto y guardar el PDF fuente con hash, versión y fecha de carga.</li>
+            <li>Crear una versión de coste individual y otra versión mayorista; ambas permanecen separadas.</li>
+            <li>Cuando exista una oferta de fabricación real, adjuntar presupuesto del proveedor y sustituir la estimación solo mediante nueva versión, sin borrar la anterior.</li>
+            <li>Al aprobar un pedido de 15 unidades, crear el pedido, las 15 piezas individuales y el presupuesto de lote.</li>
+            <li>Registrar factura de fabricación y transporte cuando existan; no convertir una estimación en coste real sin documento.</li>
+            <li>Registrar factura de venta, IVA aplicable, pago recibido, devoluciones y conciliación bancaria.</li>
+            <li>Calcular el resultado con una regla aprobada y mostrar cada coste incluido/excluido.</li>
+            <li>Tras cierre y aprobación, registrar asignaciones a fondos; después, registrar transferencia, recepción y gasto final por separado.</li>
+          </ol>
+        </div>
+        <div class="gsub">
+          <p class="gh">7. Campos mínimos de cada movimiento</p>
+          <div class="ents-w"><table class="ents">
+            <thead><tr><th>Campo</th><th>Uso</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><span class="fld">ledger_id</span></th><td>ID único e inmutable del registro.</td></tr>
+              <tr><th scope="row"><span class="fld">event_type</span></th><td><div class="chips">
+<span class="chip">PRODUCT_MASTER</span>
+<span class="chip">COST_ESTIMATE</span>
+<span class="chip">COST_ACTUAL</span>
+<span class="chip">SALE</span>
+<span class="chip">PAYMENT</span>
+<span class="chip">REFUND</span>
+<span class="chip">TAX</span>
+<span class="chip">TRANSFER</span>
+<span class="chip">ALLOCATION</span>
+<span class="chip">EXPENSE</span>
+<span class="etc">etc.</span>
+</div></td></tr>
+              <tr><th scope="row"><span class="fld">source_reference</span></th><td>PDF, contrato, factura, recibo, extracto o documento de origen.</td></tr>
+              <tr><th scope="row"><span class="fld">entity_id</span></th><td>Producto, pieza, pedido, proveedor, cooperante, proyecto o cuenta relacionada.</td></tr>
+              <tr><th scope="row"><span class="fld">amount_original</span><span class="sl">/</span><span class="fld">currency</span></th><td>Importe y moneda originales.</td></tr>
+              <tr><th scope="row"><span class="fld">amount_chf</span><span class="sl">/</span><span class="fld">fx_rate</span><span class="sl">/</span><span class="fld">fx_date</span></th><td>Equivalente CHF solo cuando proceda, con tipo y fuente del cambio.</td></tr>
+              <tr><th scope="row"><span class="fld">status</span></th><td><div class="chips">
+<span class="chip">DRAFT</span>
+<span class="chip">ESTIMATE</span>
+<span class="chip">SUBMITTED</span>
+<span class="chip">REVIEWED</span>
+<span class="chip">APPROVED</span>
+<span class="chip">EXECUTED</span>
+<span class="chip">RECONCILED</span>
+<span class="chip">REVERSED</span>
+</div></td></tr>
+              <tr><th scope="row"><span class="fld">occurred_at</span><span class="sl">/</span><span class="fld">recorded_at</span></th><td>Fecha de operación y fecha de registro, separadas.</td></tr>
+              <tr><th scope="row"><span class="fld">created_by</span><span class="sl">/</span><span class="fld">approved_by</span></th><td>Autor y aprobador, con segregación de funciones.</td></tr>
+              <tr><th scope="row"><span class="fld">supersedes</span><span class="sl">/</span><span class="fld">correction_reason</span></th><td>Referencia a versión anterior y motivo de corrección.</td></tr>
+              <tr><th scope="row"><span class="fld">evidence_uri</span><span class="sl">/</span><span class="fld">evidence_hash</span></th><td>Localización del documento y huella de integridad cuando se implemente.</td></tr>
+              <tr><th scope="row"><span class="fld">policy_version</span></th><td>Versión de la regla económica usada en el cálculo.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <figcaption>Imagen del fundador · «Flujo que debe soportar el sistema» (8 pasos) y «Campos mínimos de cada movimiento» (tabla de campos del registro).<br>Ospina, 15.01.2026. En: “Miselia Ledger: Estudió de caso”.</figcaption>
+      </figure></div>
+      <div class="tw"><table>
+        <thead><tr><th>Indicador</th><th>Tipo</th>
+          <th><span class="dot" style="background:var(--s-red)"></span></th>
+          <th><span class="dot" style="background:var(--s-yellow)"></span></th>
+          <th><span class="dot" style="background:var(--s-green)"></span></th>
+          <th><span class="dot" style="background:var(--s-blue)"></span></th></tr></thead>
+        <tbody>
+          <tr><th>Francos ejecutados y verificados</th><td>Resultado</td><td><span class="pend"></span></td><td><span class="pend"></span></td><td><span class="pend"></span></td><td><span class="pend"></span></td></tr>
+          <tr><td>Cooperantes activos, a 24 meses</td><td>Esfuerzo</td><td>Menos de 400</td><td>400 a 729</td><td><b>730</b></td><td>1.000</td></tr>
+          <tr><td>Costos con documento de respaldo</td><td>Esfuerzo</td><td>Menos de 95%</td><td>95 a 99%</td><td><b>100%</b></td><td>—</td></tr>
+          <tr><td>Día de publicación del cierre</td><td>Esfuerzo</td><td>Después del 35</td><td>31 a 35</td><td><b>Hasta el 30</b></td><td>—</td></tr>
+          <tr><td>Aprobaciones que pasan por el fundador</td><td>Esfuerzo</td><td>Sube</td><td>Igual</td><td><b>Baja</b></td><td>—</td></tr>
+          <tr><td>Personas encontradas y rescatadas</td><td>Se reporta</td><td colspan="4">Sin semáforo</td></tr>
+        </tbody>
+      </table></div>
+      <p><span class="dot" style="background:var(--s-red)"></span> preocupa · <span class="dot" style="background:var(--s-yellow)"></span> alerta · <span class="dot" style="background:var(--s-green)"></span> meta · <span class="dot" style="background:var(--s-blue)"></span> supera la meta</p>
+      <p><b>La meta cabe en la capacidad máxima.</b> Con 66 piezas al mes (de ingreso neto distribuible: 500 fr), por 24 meses dan 1500 clientes cooperativistas, pasando de largo la meta máxima de 1000 personas naturales o jurídicas.</p>
+      <div class="gauge">
+        <label class="lab" for="rng">Cooperantes activos, a 24 meses · mueva el control</label>
+        <div class="read"><span class="big" id="gn">730</span><span class="lab" id="gs"></span></div>
+        <div class="bar"><i style="width:36.36%;background:var(--s-red)"></i><i style="width:30%;background:var(--s-yellow)"></i><i style="width:24.55%;background:var(--s-green)"></i><i style="width:9.09%;background:var(--s-blue)"></i><span class="mk" id="gm"></span></div>
+        <div class="tk"><span style="left:0;transform:none">0</span><span style="left:36.36%">400</span><span style="left:66.36%">730</span><span style="left:90.91%">1.000</span></div>
+        <input id="rng" type="range" min="0" max="1100" step="10" value="730">
+      </div>
+      <h4>Un franco cuenta cuando cumple las tres.</h4>
+      <ol class="nl punto">
+        <li>Salió del Fondo hacia un proveedor o un destino</li>
+        <li>Tiene factura, proveedor, fecha y, si es equipo, número de serie</li>
+        <li>Lo firmó alguien que no es Miselia</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="blk" id="b17">
+    <div class="bh"><span class="n">17 ·</span><h3>Responsables</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th>Función</th><th class="c-hoy">HOY</th><th class="c-rumbo">RUMBO</th></tr></thead>
+        <tbody>
+          <tr><th>Dirección general</th><td class="c-hoy">El fundador</td><td class="c-rumbo">El fundador, hasta su retiro</td></tr>
+          <tr><th>Venta</th><td class="c-hoy">El fundador, con la presentación del proyecto</td><td class="c-rumbo">Un equipo</td></tr>
+          <tr><th>Aprobar transferencias</th><td class="c-hoy">El fundador</td><td class="c-rumbo"><span class="pend"></span></td></tr>
+          <tr><th>Registrar cada operación con su soporte</th><td class="c-hoy">Miselia Transparency Chain (MTC)</td><td class="c-rumbo">El sistema Miselico</td></tr>
+          <tr><th>Preparar la contabilidad</th><td class="c-hoy">Un contable en Colombia y uno en Suiza</td><td class="c-rumbo">Igual</td></tr>
+          <tr><th>Ejecutar pagos</th><td class="c-hoy">El banco</td><td class="c-rumbo">Igual</td></tr>
+          <tr><th>Auditar</th><td class="c-hoy"><span class="pend">comité Ética designado por caso</span></td><td class="c-rumbo">Un tercero independiente, cada año</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b18">
+    <div class="bh"><span class="n">18 ·</span><h3>Ritmo</h3></div>
+    <div class="bc">
+      <div class="tw"><table>
+        <thead><tr><th>Cada</th><th>Se revisa</th></tr></thead>
+        <tbody>
+          <tr><th>Mes</th><td>El cierre: conciliar, calcular, transferir, publicar</td></tr>
+          <tr><th>Trimestre</th><td>La prioridad, las rocas y el número crítico</td></tr>
+          <tr><th>Año</th><td>Las metas, los valores y el informe anual, publicado en un periódico de Zúrich</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note"><b>Ninguna meta, valor o promesa cambia sin quedar anotado en el registro.</b></p>
+    </div>
+  </article>
+</section>
+
+<!-- ================= V ================= -->
+<section class="part" id="p5">
+  <div class="ph"><h2>V · HOLDING</h2></div>
+
+  <article class="blk" id="b19">
+    <div class="bh"><span class="n">19 ·</span><h3>Líneas</h3><p class="hint">Toque una línea para ver su ficha.</p></div>
+    <div class="bc">
+      <div class="sys">
+        <div class="col" id="lines"></div>
+        <span class="ar" aria-hidden="true">→</span>
+        <div class="mid">Resultado distribuible</div>
+        <span class="ar" aria-hidden="true">→</span>
+        <div class="end"><span class="lab soft">Miselia Humanitaria</span><b>Fondo Humanitario</b><b>Unidad de rescate · la misión</b></div>
+      </div>
+      <div class="ficha" id="ficha" aria-live="polite"></div>
+      <div class="tw"><table>
+        <thead><tr><th>Línea</th><th>Papel</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><th>Joyas</th><td>Motor</td><td>Preventa desde el primer trimestre de 2027</td></tr>
+          <tr><th>Producciones</th><td>Motor</td><td>Cinemateca a inicios de 2029</td></tr>
+          <tr><th>Agrícola</th><td>Motor</td><td>Marca de Pistachos</td></tr>
+          <tr><th>Metales (operación en Colombia-Reciclaje)</th><td>Legitimador</td><td>A aplicar</td></tr>
+          <tr><th>Materiales</th><td>Legitimador</td><td>Empaque Joyas (en experimentación)</td></tr>
+          <tr><th>Unidad de rescate</th><td><b>La misión</b></td><td>Diseñada y costeada. El equipo se forma y se certifica en los primeros tres años</td></tr>
+        </tbody>
+      </table></div>
+      <p class="st s">Primero una línea rentable. Después, la siguiente.</p>
+      <p class="note"><b>Cada línea opera sobre un sistema medible.</b> Registra cada operación con su soporte y mide el recorrido del cliente cooperativista. Es lo que hace posible la cadena de transparencia de Miselia, y lo que permite hacer crecer económicamente la línea.</p>
+      <p><b>La unidad de rescate</b> mantiene su tamaño (trinomio) y se especializa cada vez más. Tiene base en Suiza y autonomía de siete días en terreno por Misión de Rescate, proyectando (5) misiones al año. En campo (Colombia y Suiza) tiene por crear una base de 14 voluntarios expertos (bomberos) en los dos países, y una red de cooperantes especializados de 60 personas (Cruz Roja o Defensa Civil). Siempre en aprendizaje continuo e interconectado con el Usar-Miselia1.</p>
+    </div>
+  </article>
+
+  <article class="blk" id="b20">
+    <div class="bh"><span class="n">20 ·</span><h3>Cuentas y reparto</h3></div>
+    <div class="bc">
+      <p class="st s">Nada es distribuible hasta cerrar y conciliar ingresos, impuestos, costos, obligaciones y amortizaciones.</p>
+      <div class="form">
+        <div><span></span><span>INGRESOS BRUTOS</span></div>
+        <div><span>−</span><span>IVA e impuestos indirectos</span></div>
+        <div><span>−</span><span>costos directos del producto o evento</span></div>
+        <div><span>−</span><span>producción, exportación e importación</span></div>
+        <div><span>−</span><span>comercialización atribuible</span></div>
+        <div><span>−</span><span>operación atribuible</span></div>
+        <div><span>−</span><span>devoluciones y anulaciones</span></div>
+        <div><span>=</span><span>RESULTADO DISTRIBUIBLE → Miselia Humanitaria</span></div>
+      </div>
+      <p><b>El aporte es fijo por unidad vendida.</b> No crece con el monto de la compra y no se escalona: el micelio busca expansión, no acumulación.</p>
+      <p><b>Miselia Humanitaria</b> es una organización independiente, con su propia cuenta bancaria. Recibe el aporte directo de cada línea.</p>
+      <h4>Ej. Línea Joyas</h4>
+      <div class="tw"><table>
+        <thead><tr><th>Cuenta</th><th>Para qué</th></tr></thead>
+        <tbody>
+          <tr><th>A. Miselia GmbH</th><td>Ventas de Joyas. Pago de impuestos, costos, obligaciones y amortizaciones</td></tr>
+          <tr><th>B. MiseliaHumanitaria – Modelo Verein-</th><td>Fondo Humanitario. Monto distribuible en una cuenta bancaria cerrada hasta los 730 clientes cooperativistas. Fondo de las Misiones Usar.<br><span class="soft">VEREIN: organización creada por personas que se unen para perseguir un objetivo común, por ejemplo, cultural, humanitario, deportivo, educativo o de interés público.:</span></td></tr>
+          <tr><th>C. USAR-Miselia1</th><td>Unidad de rescate. Solo creación, maquinaria, equipamiento y operaciones</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+
+  <article class="blk" id="b21">
+    <div class="bh"><span class="n">21 ·</span><h3>Gobierno</h3></div>
+    <div class="bc">
+      <dl class="kv">
+        <div class="c-hoy"><dt><span class="tag">HOY</span></dt><dd>La empresa Miselia GmbH nace privada, al igual que la marca de joyas, de pistachos o la Cinemateca. El fundador asume todo el riesgo, toda la deuda, toda la responsabilidad y por ende, toda decisión.</dd></div>
+        <div class="c-rumbo"><dt><span class="tag r">RUMBO</span></dt><dd>Cuando el sistema alcanza equilibrio, la marca comienza a ser sustentable como modelo socio-capitalista. Cada marca tiene un punto de equilibrio distinto. Los clientes cooperativitas iniciales (hasta 1000) son la cohorte fundadora, para el caso de Miselia Joyas. Todo el dinero recaudado es para usarlo mediante el USAR-Miselia1, un sistema colegiado toma la decisión de destino del fondo (catástrofe).</dd></div>
+      </dl>
+      <div class="tw"><table>
+        <thead><tr><th class="i">#</th><th>Regla</th></tr></thead>
+        <tbody>
+          <tr><td class="i">1</td><td><b>Nadie controla toda la cadena.</b> El sistema funciona aunque quien lo creó no esté</td></tr>
+          <tr><td class="i">2</td><td>Tres niveles de información: público, cooperante y auditor</td></tr>
+          <tr><td class="i">3</td><td>Auditoría independiente cada año, aunque la ley no la exija</td></tr>
+          <tr><td class="i">4</td><td>Remuneraciones y partes relacionadas, a la vista</td></tr>
+          <tr><td class="i">5</td><td><b>Ninguna línea de negocio de las tres expuestas, financia actividades políticas</b></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </article>
+</section>
+
+<footer><span><b>Miselia Humanitaria</b> · Manifiesto</span><span>Aprobada por el fundador · <span class="num">2026-10-19</span> · versión 5</span></footer>
+</main>
+</div>
+
+<script>
+(function(){
+  /* vista HOY / RUMBO */
+  var segs=document.querySelectorAll(".seg button");
+  segs.forEach(function(b){b.addEventListener("click",function(){
+    document.body.setAttribute("data-view",b.dataset.v);
+    segs.forEach(function(x){x.setAttribute("aria-pressed",x===b);});
+  });});
+
+  /* pendientes */
+  var pb=document.getElementById("pbtn");
+  pb.textContent="Pendientes · "+document.querySelectorAll("main .pend, main .tag.p").length;
+  pb.addEventListener("click",function(){
+    var on=document.body.classList.toggle("showp");
+    pb.setAttribute("aria-pressed",on);
+    if(on){var f=document.querySelector("main .pend, main .tag.p");if(f)f.scrollIntoView({block:"center"});}
+  });
+
+  /* circuito entre líneas */
+  var lp=document.getElementById("loop");
+  if(lp){
+    var NS="http://www.w3.org/2000/svg";
+    var E=function(t,a,x){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(x!=null)e.textContent=x;return e;};
+    var cx=310,cy=205,R=158,ang=[-90,-18,54,126,198];
+    var N=[["VENTA"],["REPARTO","PUBLICADO"],["LA FAMILIA","LO COMPRUEBA"],["CONFÍA"],["vuelve · trae a otra","familia · compra","en otra línea"]];
+    var pt=function(a){var r=a*Math.PI/180;return [cx+R*Math.cos(r),cy+R*Math.sin(r)];};
+    var defs=E("defs",{}),mk=E("marker",{id:"la",viewBox:"0 0 10 10",refX:"8",refY:"5",markerWidth:"8",markerHeight:"8",orient:"auto"});
+    mk.appendChild(E("path",{d:"M0,0L10,5L0,10z",style:"fill:var(--ink)"}));defs.appendChild(mk);lp.appendChild(defs);
+    for(var j=0;j<5;j++){
+      var a1=ang[j]+24,a2=(j===4?270:ang[j+1])-24,p1=pt(a1),p2=pt(a2);
+      lp.appendChild(E("path",{d:"M"+p1+" A"+R+" "+R+" 0 0 1 "+p2,style:"fill:none;stroke:var(--ink);stroke-width:1.6","marker-end":"url(#la)"}));
+    }
+    N.forEach(function(ls,j){
+      var c=pt(ang[j]),w=0;ls.forEach(function(l){w=Math.max(w,l.length*8.6);});w+=28;
+      var h=ls.length*19+18,aha=(j===2);
+      lp.appendChild(E("rect",{x:c[0]-w/2,y:c[1]-h/2,width:w,height:h,style:"fill:var(--paper);stroke:"+(aha?"var(--red)":"var(--ink)")+";stroke-width:"+(aha?2.5:1.5)}));
+      ls.forEach(function(l,k){lp.appendChild(E("text",{"class":"v",x:c[0],y:c[1]-h/2+24+k*19,style:"font-size:15px"},l));});
+    });
+  }
+
+  /* capacidad */
+  var cap=document.getElementById("cap");
+  for(var i=0;i<66;i++){var s=document.createElement("i");cap.appendChild(s);}
+
+  /* semáforo */
+  var r=document.getElementById("rng");
+  function gauge(){
+    var v=+r.value,t,c;
+    if(v<400){t="Preocupa";c="var(--s-red)";}
+    else if(v<730){t="Alerta";c="var(--s-yellow)";}
+    else if(v<1000){t="Meta";c="var(--s-green)";}
+    else{t="Supera la meta";c="var(--s-blue)";}
+    document.getElementById("gn").textContent=v;
+    var s=document.getElementById("gs");s.textContent=t;s.style.color=c;
+    document.getElementById("gm").style.left="calc("+(v/1100*100)+"% - 2px)";
+  }
+  r.addEventListener("input",gauge);gauge();
+
+  /* ficha por línea: cruza los bloques 8, 19 y 20 */
+  var L=[
+    {n:"Joyas",p:"Motor",e:"Preventa desde el primer trimestre de 2027",c:"A · Miselia GmbH",
+     t:[["Quién","Familias, individuos y empresas"],["Dónde","Zúrich y su aglomeración"],["Qué","Joyería de oro y esmeralda colombianos"],["Cómo","Presentación del proyecto, cara a cara"]]},
+    {n:"Producciones",p:"Motor",e:"Cinemateca a inicios de 2029",c:"",
+     t:[["Quién","Familias: niños y adultos a la vez"],["Dónde","Zúrich, y después hasta donde alcance la capacidad operativa"],["Qué","Shows experienciales: teatro, con historias paralelas en stop motion como antesala"],["Cómo","Boletería y talleres"]]},
+    {n:"Agrícola",p:"Motor",e:"Marca de Pistachos",c:"",
+     t:[["Quién","Familias, por suscripción anual"],["Dónde","Toda Suiza, por sectores"],["Qué","Pistacho producido en España y procesado en Suiza: se tuesta, se sala, se empaca y se comercializa"],["Cómo","Membresía anual, después de probar el producto"]]},
+    {n:"Metales (operación en Colombia-Reciclaje)",p:"Legitimador",e:"A aplicar",c:"",t:[],off:1},
+    {n:"Materiales",p:"Legitimador",e:"Empaque Joyas (en experimentación)",c:"",t:[],off:1}
+  ];
+  var host=document.getElementById("lines"),fi=document.getElementById("ficha");
+  function row(dl,k,v){var d=document.createElement("div"),a=document.createElement("dt"),b=document.createElement("dd");a.textContent=k;b.textContent=v;d.appendChild(a);d.appendChild(b);dl.appendChild(d);}
+  function show(i){
+    var x=L[i];fi.textContent="";
+    var h=document.createElement("h5");h.textContent=x.n;fi.appendChild(h);
+    var dl=document.createElement("dl");dl.className="kv";
+    row(dl,"Papel",x.p);row(dl,"Estado",x.e);
+    x.t.forEach(function(p){row(dl,p[0],p[1]);});
+    if(x.c)row(dl,"Cuenta",x.c);
+    fi.appendChild(dl);
+    Array.prototype.forEach.call(host.children,function(b,j){b.setAttribute("aria-pressed",j===i);});
+  }
+  L.forEach(function(x,i){
+    var b=document.createElement("button");if(x.off)b.className="off";
+    var s=document.createElement("span");s.className="lab";s.textContent=x.p;
+    var t=document.createElement("b");t.textContent=x.n;
+    b.appendChild(s);b.appendChild(t);
+    b.addEventListener("click",function(){show(i);});
+    host.appendChild(b);
+  });
+  show(0);
+
+  /* navegación: parte activa */
+  if("IntersectionObserver" in window){
+    var links={};document.querySelectorAll("nav.top a").forEach(function(a){links[a.getAttribute("href").slice(1)]=a;});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){for(var k in links)links[k].classList.toggle("on",k===e.target.id);}
+    });},{rootMargin:"-30% 0px -60% 0px"});
+    ["p1","p2","p3","p4","p5"].forEach(function(id){io.observe(document.getElementById(id));});
+  }
+})();
+</script>
+</body>
